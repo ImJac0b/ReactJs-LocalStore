@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Nixie+One');
+
+.container {
+  max-width: 450px;
+  max-height: 450px;  
+  margin-top: 100px;
+  color: black;
+    
+}
+
+html{
+    
+    font-family: 'Nixie One', cursive;
+}
+body{
+   
+    animation: gradient-move 15s linear infinite;
+}
+h1{
+    color: #fff;
+    text-transform: uppercase;
+}
+
+
+@keyframes gradient-move {
+    10%{background-color: #FF5F6D}
+    20%{background-color: rgb(255, 199, 121)}
+    40%{background-color: #ff9068}
+    60%{background-color: #CB3066}
+    80%{background-color: #16BFFD}
+    90%{background-color: #EECDA3}
+}
+
