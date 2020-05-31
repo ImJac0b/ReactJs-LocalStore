@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 import './App.css';
 
-import FormDataComponent from './components/form-data.component';
+import FormDataComponent from './pages/form-data.component';
 
 class App extends Component {
   render() {
