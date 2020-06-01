@@ -3,6 +3,8 @@ import NumberFormat from 'react-number-format';
 import Input from '../components/input';
 import Table from '../components/table';
 import Option from '../components/option';
+import Button from '../components/button';
+import { AlertList, Alert, AlertContainer } from "react-bs-notifier";
 
 export default class FormDataComponent extends Component {
 
@@ -18,15 +20,13 @@ export default class FormDataComponent extends Component {
         this.state = {
             valor: '',
             option: '',
-            trm: '',
-            estado: false
+            trm: ''
         }
     }
 
     // Form Values
     onChangeValor(e) {
         this.setState({ valor: e })
-        console.log(e);
     }
 
     onChangeOption(e) {
@@ -39,43 +39,47 @@ export default class FormDataComponent extends Component {
 
 
     Send() {
-        let data = new FormData();
-        data.append("Valor", this.state.valor);
-        data.append("Option", this.state.option);
-        data.append("Trm", this.state.trm);
-        fetch("https://httpbin.org/post", {
-            method: "POST",
-            body: data
-        })
-            .then((res) => res.json())
-            .then(
-                (result) => {
-                    console.log(result.form);
-                    this.setState({
-                        valor: result.form.Valor,
-                        option: result.form.Option,
-                        trm: result.form.Trm
-                    });
-                    
-                    let contador = 0;
-                    while (this.state.estado == false) {
-                        let local = localStorage.getItem('user'+contador)
+        if (this.state.valor != null, this.state.option != null, this.state.trm != null) {
+            let data = new FormData();
+            data.append("Valor", this.state.valor);
+            data.append("Option", this.state.option);
+            data.append("Trm", this.state.trm);
+            fetch("https://httpbin.org/post", {
+                method: "POST",
+                body: data
+            })
+                .then((res) => res.json())
+                .then(
+                    (result) => {
 
-                        if (local == null) {                            
-                            localStorage.setItem('user' + contador, JSON.stringify(this.state))
-                            this.state.estado = true;
 
-                        }else{
-                            contador++
+                        let estado = false;
+                        let contador = 0;
+                        while (estado == false) {
+                            let local = localStorage.getItem('user' + contador)
+
+                            if (local == null) {
+
+                                localStorage.setItem('user' + contador, JSON.stringify(result.form))
+                                estado = true;
+                                window.location.href = window.location.href;
+
+                            } else {
+                                contador++
+                            }
+
                         }
-                        
+                    },
+                    (error) => {
+                        console.log(error);
                     }
-                },
-                (error) => {
-                    console.log(error);
-                }
-            );
-
+                );
+        } else {
+            Alert.alert(
+                'Error',
+                'Complete the information'                
+            )
+        }
     }
 
 
@@ -94,10 +98,13 @@ export default class FormDataComponent extends Component {
                         <Input onNumberChange={this.onChangeTrm}></Input>
                     </div>
                     <button type="button" className="btn btn-primary btn-block" onClick={() => this.Send()}>Submit</button>
+
+                    <Button></Button>
                 </form>
                 <Table></Table>
+
             </div>
-        )
+        );
 
     }
 }

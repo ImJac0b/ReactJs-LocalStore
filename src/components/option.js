@@ -23,7 +23,7 @@ export default class Option extends Component {
                         <label>Option</label>
                         <select type="option" className="form-control" value={opt} onChange={this.handleChange}>
 
-                            <option value="0" id="0">Selection</option>
+                            <option value="0" id="0"></option>
 
                             <option value="1" id="1">Option 1</option>
 
@@ -33,6 +33,6 @@ export default class Option extends Component {
 
                         </select>
             </div>
-        )
+        );
     }
 }

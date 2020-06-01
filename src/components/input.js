@@ -24,7 +24,7 @@ export default class Input extends Component {
     render() {
         const number = this.props.number;
         return (
-            <input type="number" className="form-control" value={number} onChange={this.handleChange}/>
-        )
+            <input type="number" className="form-control ini" value={number} onChange={this.handleChange}/>
+        );
     }
 }

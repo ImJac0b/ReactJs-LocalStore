@@ -23,16 +23,17 @@ export default class Table extends Component {
                 contador++
             }
         }
-        let colum;
-        let cont=1;
+        let colum = null;
+        let cont = 0;
+        
         if (data != null) {
-            colum = data.map((local) => (
-                <tr>
-                    <th scope="row">{cont++}</th>
-                    <td>{local.Valor}</td>
-                    <td>{local.Option}</td>
-                    <td>{local.Trm}</td>
-                </tr>
+            colum = data.map((local) => (                
+                    <tr key={++cont}>
+                        <th scope="row">{cont}</th>
+                        <td>{local.Valor}</td>
+                        <td>{local.Option}</td>
+                        <td>{local.Trm}</td>
+                    </tr>                
             ));
         }
 
@@ -50,6 +51,6 @@ export default class Table extends Component {
                     {colum}
                 </tbody>
             </table>
-        )
+        );
     }
 }
