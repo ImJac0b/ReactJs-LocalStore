@@ -4,10 +4,12 @@ import Input from '../components/input';
 import Table from '../components/table';
 import Option from '../components/option';
 import Button from '../components/button';
-import { AlertList, Alert, AlertContainer } from "react-bs-notifier";
+
+
+
 
 export default class FormDataComponent extends Component {
-
+    
 
     constructor(props) {
         super(props);
@@ -37,9 +39,9 @@ export default class FormDataComponent extends Component {
         this.setState({ trm: e })
     }
 
-
+    
     Send() {
-        if (this.state.valor != null, this.state.option != null, this.state.trm != null) {
+        if (this.state.valor != 0, this.state.option != 0, this.state.trm != 0) {
             let data = new FormData();
             data.append("Valor", this.state.valor);
             data.append("Option", this.state.option);
@@ -75,10 +77,10 @@ export default class FormDataComponent extends Component {
                     }
                 );
         } else {
-            Alert.alert(
-                'Error',
-                'Complete the information'                
+            alert(
+                "ERRORRRRRR!!! Complete the information"
             )
+            
         }
     }
 
@@ -86,7 +88,7 @@ export default class FormDataComponent extends Component {
     render() {
         return (
 
-            <div className="container">
+            <div className="container">                
                 <form className="mb-4">
                     <div className="form-group">
                         <label>Valor</label>
@@ -101,9 +103,11 @@ export default class FormDataComponent extends Component {
 
                     <Button></Button>
                 </form>
-                <Table></Table>
-
+                <Table></Table>                
+                
             </div>
+
+            
         );
 
     }
