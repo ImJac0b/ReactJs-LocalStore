@@ -1,0 +1,10 @@
+Requisitos: 
+NodeJs >= 14.3.0
+Npm >= 6.14.5
+ 
+
+1. Clonar el repositorio 
+2. Entrar a la ruta de la carpeta recién clonada 
+3. Ejecutar comando: npm install
+4. Ejecutar comando: npm start 
+
